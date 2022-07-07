@@ -28,6 +28,5 @@ jobs:
     - name: Build Application and Set new version inscrease +1 
       run: |
        cd my-app
-       version= $(mvn versions:set -DnewVersion=1.0.1-SNAPSHOT)
-       version=$(echo ${version} |  awk -F'.' '{print $1"."$2"."$3}' |  sed s/[.]$//)
-       mvn -U versions:set -DnewVersion=${version}
+       VERSION = $(mvn versions:set -DnewVersion=1.0.1-SNAPSHOT)
+       echo $VERSION
