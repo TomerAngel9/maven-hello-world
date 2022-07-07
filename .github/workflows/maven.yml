@@ -26,6 +26,7 @@ jobs:
         java-version: 1.8
     - name: test
       run: |
+       echo tomer
        cd my-app
        version=$(mvn -q -U -Dexpression=project.version -DforceStdout maven-help-plugin:evaluate)
        version=$(echo ${version} |  awk -F'.' '{print $1"."$2+1"."$3}' |  sed s/[.]$//)
