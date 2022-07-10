@@ -15,8 +15,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env: 
-      projectversion: 1.0.1
+
     
     steps:
     - uses: actions/checkout@v2
@@ -33,7 +32,7 @@ jobs:
         MVN_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
         echo $MVN_VERSION
         java -cp target/classes com.mycompany.app.App
-        mkdir artifact-app && cp target/*.jar artifact-app
+        mkdir artifact-app && cp target/*.jar artifact-app 
         
     - name: Publish to Artifact
       uses: actions/upload-artifact@v2
@@ -69,5 +68,8 @@ jobs:
         
     - name: Run a Docker Container :) DONE!
       run: |
+        cd my-app
+        MVN_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        echo $MVN_VERSION
         docker run -d -p 8080:8080 --name tomerapplicationmaven 102030102030/my-app-tomerangel:$MVN_VERSION
       
