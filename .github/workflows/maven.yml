@@ -53,13 +53,13 @@ jobs:
     - name: Build a Dockerfile
       run: |
         cd my-app
-        docker build -t my-app-tomerangel:$MVN_VERSION-SNAPSHOT .
+        docker build -t my-app-tomerangel:$MVN_VERSION .
       
       
     - name: Push Image to DockerHub
       run: |
         docker login -u ${{ secrets.USER_NAME }} -p ${{ secrets.USER_PASS }}
-        docker tag my-app-tomerangel:$MVN_VERSION-SNAPSHOT 102030102030/my-app-tomerangel:$MVN_VERSION
+        docker tag my-app-tomerangel:$MVN_VERSION 102030102030/my-app-tomerangel:$MVN_VERSION
         docker push 102030102030/my-app-tomerangel:$MVN_VERSION
         
         
