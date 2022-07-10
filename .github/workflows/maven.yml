@@ -28,5 +28,6 @@ jobs:
     - name: Build Application and Set new version inscrease +1 
       run: |
        cd my-app
-       VERSION = $(mvn versions:set -DnewVersion=1.0.1-SNAPSHOT)
-       echo $VERSION
+       mvn help:evaluate -Dexpression=project.com.mycompany.app -q -DforceStdout
+       mvn help:evaluate -Dexpression=project.my-app -q -DforceStdout
+       mvn help:evaluate -Dexpression=project.version -q -DforceStdout
