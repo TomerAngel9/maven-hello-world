@@ -30,6 +30,6 @@ jobs:
        cd my-app
        mvn versions:set -DnewVersion=1.0.1   
        cat pom.xml
-       MVN_VERSION=$(mvn -q \ -Dexec.executable=echo \-Dexec.args='${project.version}' \ --non-recursive \ exec:exec)
+       MVN_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
        echo $MVN_VERSION
 
