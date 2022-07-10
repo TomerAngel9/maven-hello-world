@@ -53,6 +53,8 @@ jobs:
     - name: Build a Dockerfile
       run: |
         cd my-app
+        MVN_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        echo $MVN_VERSION
         docker build -t my-app-tomerangel:$MVN_VERSION .
       
       
